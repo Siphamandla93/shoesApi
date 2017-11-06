@@ -1,6 +1,6 @@
 module.exports = function(models) {
 
-
+//Writting a function for adding shoes
     var addShoes = function(req, res, next) {
         var moreShoes = req.body
 
@@ -14,7 +14,7 @@ module.exports = function(models) {
         })
     }
 
-
+//Writting a function that will find all shoes from the database
     var allShoes = function(req, res, next) {
         models.shoesAPI.find({},
             function(err, ofShoe) {
@@ -25,6 +25,7 @@ module.exports = function(models) {
             })
     }
 
+//Function that will filter shoes by their brand name
     var brandFunction = function(req, res, next) {
      var brand = req.params.brandname
     models.shoesAPI.find({brand:brand}, function(err, result){
@@ -38,7 +39,7 @@ module.exports = function(models) {
 
     }
 
-
+//Function that will filter shoes by their size
     var sizeFunction = function(req, res, next) {
      var size = req.params.size
     models.shoesAPI.find({size:size}, function(err, result){
@@ -52,7 +53,7 @@ module.exports = function(models) {
 
     }
 
-
+//Function that will filter shoes by both size and brand
 var brandAndSize = function(req, res, next){
   var brandName = req.params.brandname
   var shoeSize = req.params.size
@@ -67,7 +68,7 @@ var brandAndSize = function(req, res, next){
   })
 
 }
-
+//Function that will decrement stock when a shoe is purchased
 const Quantity = function(req, res, next) {
   var shoesQuantity = req.params.id
   models.shoesAPI.findOneAndUpdate({
@@ -91,7 +92,7 @@ const Quantity = function(req, res, next) {
     })
 }
 
-
+//Returning all of my Functions
     return {
         allShoes,
         addShoes,

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <link rel="stylesheet" href="API.css">
+    <title>Shoes API</title>
+</head>
+
+
+<body>
+<br>
+
+
+<div id="inputForm">
+  <input class="priceInput" type="text" placeholder="Price">
+ <input class="brandInput" type="text" placeholder="Brand">
+  <input class="colorInput" type="text" placeholder="Color">
+  <input class="sizeInput" type="text" placeholder="size">
+  <input class="imageInput" type="text" placeholder="image">
+  <input class="addStockInput" type="text" placeholder="addStock">
+  <button type="Add button" name="submitButton" id="submitBtn" value="submit">ADD</button>
+</div>
+
+<br>
+<div class="filtering">
+  <input class="filterSize" type="text" placeholder="filterSize">
+  <button type="button" id="filtered" name="" value="">sizeFilter</button>
+ <input class="filterBrand" type="text" placeholder="filterBrand">
+ <button type="button" id="filter" name="" value="">brandFilter</button>
+</div>
+
+
+  <br>
+  <script id="shoeTamplate" type="text/x-handlebars-some-template">
+            <div id="allShoes">
+              {{#each shoes}}
+              <img src={{image}}>
+              <p>brand: {{brand}}</p>
+              <p>price: {{price}}</p>
+              <p>color: {{color}}</p>
+              <p>in_stock: {{in_stock}}</p>
+              <p>size: {{size}}</p>
+              <p><button type="button" id="Buy" onclick="sold('{{_id}}')" value="Buy">Buy</button></p>
+              {{/each}}
+            </div>
+          </script>
+
+<div id="displayArea">
+ </div>
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="APIS.js" charset="utf-8"></script>
+</head>

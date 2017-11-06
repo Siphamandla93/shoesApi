@@ -8,7 +8,8 @@ mongoose.Promise = global.Promise
             brand : String,
             price : Number,
             size : Number,
-            in_stock :Number
+            in_stock :Number,
+            image: String
   });
 
 // apiSchema.index({id:1}, {unique:true});

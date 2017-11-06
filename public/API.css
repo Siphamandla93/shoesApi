@@ -1,0 +1,14 @@
+img {
+    border-radius: 8px;
+    width: 350px;
+    height: 210px;
+}
+
+#displayArea{
+  display: inline-block;
+    font-size: 18px;
+}
+
+.filtering{
+  align-items: center;
+}

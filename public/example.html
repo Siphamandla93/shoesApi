@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <link rel="stylesheet" href="API.css">
+    <title>Shoes API</title>
+</head>
+
+
+<body>
+
+
+
+
+        <div class="myheading">Affordable Fashionable footwears</div>
+        <br>
+        <br>
+
+
+        <div class="Allselections">
+
+              <Select id="Izihlangu">
+            <script id="SelectShoes" type="text/x-handlebars-some-template">
+              <option value="SelectColor">SelectColor</option>
+              {{#each colors}}
+              <option value="{{ this }}">{{ this }}</option>
+              {{/each}}
+                <option value="allShoes">allShoes</option>
+      </script>
+    </Select>
+
+
+              <Select id="wear">
+            <script id="Selectsize" type="text/x-handlebars-some-template">
+              <option value="SelectSize">SelectSize</option>
+          {{#each shoes}}
+         <option value="{{Size}}">{{Size}}</option>
+         {{/each}}
+      </script>
+    </Select>
+
+
+              <button id="clickSearch">Search</button>
+              <button type="Add button" name="submitButton" id="submitBtn" value="submit">ADD</button>
+
+
+        <p id="buttons">
+              <input type="text" id="shoeColor" placeholder="Color">
+              <input type="text" id="Size" placeholder="Size">
+              <input type="text" id="Stock" placeholder="Stock">
+              <input type="text" id="Price" placeholder="Price">
+              <input type="text"id="Brand" placeholder="Brand name">
+              <input type="text" id="Image" placeholder="Add Image">
+              <button type="Add button" name="submitButton" id="submitBtn" value="submit">ADD</button>
+
+          </p>
+
+
+        <br>
+        <br>
+
+
+        <script id="myTamplate" type="text/x-handlebars-some-template">
+          <div id="shoe">
+            {{#each shoes}}
+            <img src="{{image}}">
+            <p>brand: {{brand}}</p>
+            <p>price: {{price}}</p>
+            <p>color: {{color}}</p>
+            <p>in_stock: {{in_stock}}</p>
+            <p>size: {{size}}</p>
+            {{/each}}
+          </div>
+        </script>
+        <div class="shoeDisplay">
+        </div>
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="APIS.js" charset="utf-8"></script>
+</head>
