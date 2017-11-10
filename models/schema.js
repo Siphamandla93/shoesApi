@@ -12,7 +12,7 @@ mongoose.Promise = global.Promise
             image: String
   });
 
-// apiSchema.index({id:1}, {unique:true});
+apiSchema.index({id:1}, {unique:true});
   var shoesAPI = mongoose.model('shoesAPI', apiSchema);
 
 return {shoesAPI}

@@ -23,8 +23,6 @@ $(function() {
 
     //calling get shoes function using Ajax
     function showStock() {
-        // View.innerHTML = compilingTamplate(data);
-
         $.ajax({
             type: 'GET',
             url: '/api/shoes',
@@ -41,17 +39,16 @@ $(function() {
             }
         })
     };
+    //show all the stock
     showStock();
 
-    //show all the stock
 
 
 
-    //calling POST route function using ajax
-    //  var addindNewStock = function(footWear) {
 
 
     submitButton.addEventListener("click", function() {
+      //Avoiding to add empty object when the Fields are empty
         if (colorField.value !== "" || brandField.value !== "" || priceField.value !== "" || sizeField.value !== "" || addstockField.value !== "" || imageField.value !== "") {
 
             var addShoes = {
@@ -97,7 +94,7 @@ $(function() {
         })
     })
 
-
+//filtering ajax call
     var fil = document.querySelector("#filter");
 
     fil.addEventListener("click", function() {
@@ -122,7 +119,7 @@ $(function() {
     })
 
 
-
+//Filter using only Brand Ajax call
     var showOnlyBrand = document.querySelector('#filtered');
     showOnlyBrand.addEventListener("click", function() {
         console.log('click');
@@ -139,7 +136,7 @@ $(function() {
 
             },
             error: function(jqXHR) {
-                // alert(jqXHR.status)
+
             }
         })
 
@@ -151,7 +148,7 @@ $(function() {
 
 })
 
-
+//Calling the decrementing of stock function when a shoe is bought
 var allShoesTamplate = document.getElementById('shoeTamplate').innerHTML;
 var compilingTamplate = Handlebars.compile(allShoesTamplate);
 var View = document.querySelector('#displayArea');
