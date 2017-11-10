@@ -4,7 +4,7 @@ $(function() {
     var View = document.querySelector('#displayArea');
     //referencing add button
     var submitButton = document.getElementById('submitBtn');
-
+    var refresh = document.getElementById('refresh');
     //referencing my textfields from html
     var priceField = document.querySelector('.priceInput');
     var brandField = document.querySelector('.brandInput');
@@ -19,46 +19,84 @@ $(function() {
     var showOnlyBrand = document.querySelector('.showFilteredBrand');
 
 
-    //calling get shoes function using Ajax
-    $.ajax({
-        type: 'GET',
-        url: '/api/shoes',
-        dataType: 'json',
-        success: function(showShoes) {
-            console.log(showShoes);
-            View.innerHTML = compilingTamplate({
-                shoes: showShoes
-            })
 
-        },
-        error: function(jqXHR) {
-            alert(jqXHR.status)
-        }
-    })
+
+    //calling get shoes function using Ajax
+    function showStock() {
+        // View.innerHTML = compilingTamplate(data);
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/shoes',
+            dataType: 'json',
+            success: function(showShoes) {
+                console.log(showShoes);
+                View.innerHTML = compilingTamplate({
+                    shoes: showShoes
+                })
+
+            },
+            error: function(jqXHR) {
+                alert(jqXHR.status)
+            }
+        })
+    };
+    showStock();
+
+    //show all the stock
+
+
+
     //calling POST route function using ajax
     //  var addindNewStock = function(footWear) {
 
 
     submitButton.addEventListener("click", function() {
-        var addShoes = {
-            color: colorField.value,
-            brand: brandField.value,
-            price: Number(priceField.value),
-            size: Number(sizeField.value),
-            in_stock: Number(addstockField.value),
-            image: imageField.value
+        if (colorField.value !== "" || brandField.value !== "" || priceField.value !== "" || sizeField.value !== "" || addstockField.value !== "" || imageField.value !== "") {
+
+            var addShoes = {
+                color: colorField.value,
+                brand: brandField.value,
+                price: Number(priceField.value),
+                size: Number(sizeField.value),
+                in_stock: Number(addstockField.value),
+                image: imageField.value
+            }
+            $.ajax({
+              type: 'POST',
+              url: '/api/shoes',
+              data: addShoes,
+              success: function(shoeData) {
+                showStock();
+              }
+
+            })
         }
 
+        window.location.reload();
+    })
+
+
+
+    refresh.addEventListener("click", function() {
+
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: '/api/shoes',
-            data: addShoes,
-            success: function(shoeData) {
+            dataType: 'json',
+            success: function(showShoes) {
+                console.log(showShoes);
+                View.innerHTML = compilingTamplate({
+                    shoes: showShoes
+                })
 
+            },
+            error: function(jqXHR) {
+                alert(jqXHR.status)
             }
-
         })
     })
+
 
     var fil = document.querySelector("#filter");
 
@@ -114,25 +152,26 @@ $(function() {
 })
 
 
-  var allShoesTamplate = document.getElementById('shoeTamplate').innerHTML;
+var allShoesTamplate = document.getElementById('shoeTamplate').innerHTML;
 var compilingTamplate = Handlebars.compile(allShoesTamplate);
 var View = document.querySelector('#displayArea');
-function sold(id){
-  // alert("Its working"+id)
-  console.log(id);
-  $.ajax({
-      type: 'POST',
-      url: '/api/shoes/sold/'+id,
-      dataType: 'json',
-      success: function(decreaseStock) {
-          //  console.log(showShoes);
-          View.innerHTML = compilingTamplate({
-              shoes: decreaseStock
-          })
 
-      },
-      error: function(jqXHR) {
-          // alert(jqXHR.status)
-      }
-  })
+function sold(id) {
+    // alert("Its working"+id)
+    console.log(id);
+    $.ajax({
+        type: 'POST',
+        url: '/api/shoes/sold/' + id,
+        dataType: 'json',
+        success: function(decreaseStock) {
+            //  console.log(showShoes);
+            View.innerHTML = compilingTamplate({
+                shoes: decreaseStock
+            })
+
+        },
+        error: function(jqXHR) {
+            // alert(jqXHR.status)
+        }
+    })
 }

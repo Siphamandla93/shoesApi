@@ -1,14 +1,45 @@
+/*body{
+font-family: Ubuntu, Helvectica, serif;
+}*/
+
 img {
-    border-radius: 8px;
-    width: 350px;
-    height: 210px;
+
+    width: 250px;
+    height: 250px;
 }
 
 #displayArea{
-  display: inline-block;
+
     font-size: 18px;
+    width: 100%;
+
+}
+#inputForm{
+
 }
 
 .filtering{
+background-color: brown;
+align-items: center;
+}
+
+.myheading{
+  text-align: center;
+}
+
+.style{
   align-items: center;
+}
+#allShoes{
+  width: 100%;
+}
+
+.shoe {
+  float: left;
+  padding: 10px;
+  fl
+}
+
+#inputForm{
+  display: inline-block;
 }

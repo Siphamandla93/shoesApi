@@ -71,13 +71,29 @@ var brandAndSize = function(req, res, next){
 //Function that will decrement stock when a shoe is purchased
 const Quantity = function(req, res, next) {
   var shoesQuantity = req.params.id
+
+//Condition that decrement the stock when its bought to zero
+  models.shoesAPI.findOne({
+       _id: shoesQuantity
+     }, function(err, results) {
+       console.log(results);
+       if (err) {
+         return next()
+       }else if (results.in_stock <= 1) {
+         results.remove();
+
+         res.json({
+           results: 'Out of stock'
+         })
+       } else {
+
   models.shoesAPI.findOneAndUpdate({
       _id: shoesQuantity
     }, {
 
       $inc: {
         in_stock: -1
-      }
+}
     }, {
       upSet: false
     },
@@ -90,7 +106,10 @@ const Quantity = function(req, res, next) {
         results
       })
     })
+  }
+})
 }
+
 
 //Returning all of my Functions
     return {
