@@ -10,7 +10,6 @@ module.exports = function(models) {
                 return next(err)
             }
             res.json(mostShoes)
-            console.log(moreShoes);
         })
     }
 

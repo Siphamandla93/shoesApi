@@ -42,12 +42,7 @@ $(function() {
     //show all the stock
     showStock();
 
-
-
-
-
-
-    submitButton.addEventListener("click", function() {
+     submitButton.addEventListener("click", function() {
       //Avoiding to add empty object when the Fields are empty
         if (colorField.value !== "" || brandField.value !== "" || priceField.value !== "" || sizeField.value !== "" || addstockField.value !== "" || imageField.value !== "") {
 
