@@ -1,15 +1,15 @@
-var express = require('express');
-var app = express();
-var exphbs = require('express-handlebars');
-var bodyParser = require('body-parser');
-var flash = require('express-flash');
-var session = require('express-session');
-var Funtions = require('./API');
-var Models = require('./models/schema');
-var MongoUrl = process.env.MONGO_DB_URL || 'mongodb://localhost/shoesAPI';
-var models = Models(MongoUrl);
+const express = require('express');
+const app = express();
+const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
+const flash = require('express-flash');
+const session = require('express-session');
+const Funtions = require('./API');
+const Models = require('./models/schema');
+const MongoUrl = process.env.MONGO_DB_URL || 'mongodb://localhost/shoesAPI';
+const models = Models(MongoUrl);
 
-var routes = Funtions(models);
+const routes = Funtions(models);
 
 // app.use(function(req, res, next) {
 //   res.header('Access-Control-Allow-Origin', "*");
